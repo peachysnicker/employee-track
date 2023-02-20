@@ -1,70 +1,39 @@
-# Module 12 Mini-Project: Movie Database
+# Employee Tracker Challenge
 
-In this mini-project, you will build Rest API routes for creating, retrieving, and deleting movies from a MySQL database.
+## License Badge
 
-## User Stories
+MIT Badge: [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-* As a user, I want to create a new database.
+### Table of Contents
 
-* As a user, I want to store movie names and reviews in the database in two separate table.
+-<a name="description" href="#description">Description</a> -<a name="installation" href="#installation">Installation</a> -<a name="usage" href="#usage">Usage</a> -<a name="collaborators" href="#collaborators">Collaborators</a> -<a name="guidelines" href="#guidelines">Guidelines</a> -<a name="tests" href="#tests">Tests</a> -<a name="license" href="#license">License</a> -<a name="contact" href="#contact">Contact</a>
 
-* As a user, I want to see a list of all movies.
+## Description
 
-* As a user, I want to be able to create and delete a movie.
+This is a complete project of using mysql database to track and input new information with mysql database.
 
-* As a user, I want to return a list of all the reviews and the associated movie name.
+## Installation
 
-## Acceptance Criteria
+You are required to have filesystem, inquirer, console.table and express installed from npm to complete this project.
 
-* It's done when `movie_db` is created and contains a `movies` and `reviews` table.
+## Usage
 
-* It's done when `movie_db` has been seeded with data.
+Video link:
 
-* It's done when the `/api/movies` route renders a list of all movies.
+## Collaborators
 
-* It's done when the `/api/add-movie` route successfully adds a movie when tested using Insomnia.
+n/a
 
-* It's done when the `/api/update-review` route successfully updates a movie when tested using Insomnia.
+## Tests
 
-* It's done when the `/api/movie/:id` route deletes a route when tested using Insomnia.
+Insomnia
 
----
+## License Used
 
-## Assets
+MIT
 
-Design the following database schema that contains two tables:
+## Contact me
 
-![The database schema includes a movies table and a reviews table, linked by the movie id.](./assets/image_1.png)
-
----
-
-## Notes
-
-To test your routes you will use Insomnia. If you have not already downloaded it, you will need to visit the [Insomnia download page](https://insomnia.rest/download) and do so.
-
-Refer to the documentation:
-
-[Insomnia documentation on getting started](https://support.insomnia.rest/category/152-using-insomnia)
-
-[Express.js documentation on routing](https://expressjs.com/en/guide/routing.html)
-
-[MySQL documentation on joins](https://dev.mysql.com/doc/refman/8.0/en/join.html)
-
-[npm documentation on MySQL2](https://www.npmjs.com/package/mysql2)
-
-## 💡 Hints
-
-How can you link your `movies` and `reviews` tables?
-
-How can you execute a query in an Express.js server using the npm `MySQL2` package?
-
-## 🏆 Bonus
-
-If you have completed this activity, work through the following challenge with your partner to further your knowledge:
-
-* How can you add a route to update a review?
-
-Use [Google](www.google.com) or another search engine to research this.
-
----
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+With questions please do not hesitate to email or review my github profile.
+https://github.com/peachysnicker
+myemail@email.com
