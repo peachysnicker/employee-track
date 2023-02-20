@@ -43,10 +43,10 @@ inquirer
     //Using switch statement to pass the chosen option from above 
     switch (response.options) {
         case 'View All Departments':
-            allDepartments();
+            viewAllDepartments(); //done
             break;
         case 'View All Roles':
-            allRoles();
+            viewAllRoles(); //done
             break;
         case 'View All Employees':
             allEmployees();
@@ -63,14 +63,29 @@ inquirer
         case 'Update Employee':
             updateEmployee();
             break;
-        case 'Quit':  //might need something to actually end the program.  This just ends the switch statement
+        case 'Quit':
             console.log("Thank you, the program will now end.");
             process.exit(code);
 
     }
 
+//view all departments
+function viewAllDepartments() {
+    db.query("SELECT * FROM department", function (err, results) {
+        console.table(results);
+        res.status(200).json(results);
+  })
+}
 
+//view all roles
+function viewAllRoles() {
+    db.query("SELECT * FROM roles", function (err, results) {
+        console.table(results);
+        res.status(200).json(results);
+    });
+};
 
+//view all employees
 
 
 // Default response for any other request (Not Found)
