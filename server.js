@@ -39,9 +39,9 @@ inquirer
             choices: ['View All Departments', 'View All Roles', 'View All Employees', 'Add Department', 'Add Role', 'Add Employee', 'Update Employee', 'Quit'],
         },
     ])
-    .then()
+    .then(function(val) {
     //Using switch statement to pass the chosen option from above 
-    switch (response.options) {
+    switch (val.options) {
         case 'View All Departments':
             viewAllDepartments(); //done
             break;
@@ -49,13 +49,13 @@ inquirer
             viewAllRoles(); //done
             break;
         case 'View All Employees':
-            allEmployees();
+            viewAllEmployees(); //done
             break;
         case 'Add Department':
-            addDepartment();
+            addDepartment(); //done
             break;
         case 'Add Role':
-            addRole();
+            addRole(); //done
             break;
         case 'Add Employee':
             addEmployee();
@@ -63,11 +63,9 @@ inquirer
         case 'Update Employee':
             updateEmployee();
             break;
-        case 'Quit':
-            console.log("Thank you, the program will now end.");
-            process.exit(code);
-
-    }
+        }
+    });
+    
 
 //view all departments
 function viewAllDepartments() {
@@ -86,7 +84,95 @@ function viewAllRoles() {
 };
 
 //view all employees
+function viewAllEmployees() {
+    db.query("SELECT employee.id, employee.first_name, employee.last_name, roles.title, department.name AS Department, roles.salary, CONCAT(manager.first_name,' ', manager.last_name) AS manager  FROM employee  JOIN roles ON employee.role_id = roles.id JOIN department ON roles.department_id = department.id LEFT JOIN employee AS manager ON employee.manager_id = manager.id;", function (err, results) {
+        console.table(results);
+        res.status(200).json(results);
+        
+    });
+};
 
+//add department function
+function addDepartment() {
+    app.post
+}
+function addDepartment() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                message: 'Enter new deparment name',
+                name: 'name',
+            },
+        ])
+        .then((answer) => {
+            const newDept = answer;
+            db.query("INSERT INTO department VALUES ?", 
+            {
+                name: answer.name },
+                 function (err, res) {
+                console.log(`New department has been added to the database.`);
+                console.table(res);
+            })
+        })
+};
+
+//add roles function
+function addRole() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                message: 'What is the name of the role?',
+                name: 'title',
+            },
+            {
+                type: 'input',
+                message: 'What is the salary of the role?',
+                name: 'salary',
+            },
+            {
+                type: 'input',
+                message: 'To which department ID does the role belong?',
+                name: 'department_id',
+            },
+        ])
+        .then((response) => {
+            db.query("INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?), [role.title, role.salary, role.department_id]")
+            console.table(response);
+        })
+};
+//add employee function
+function addEmployee() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                message: 'What is the first name of the employee?',
+                name: 'first_name',
+            },
+            {
+                type: 'input',
+                message: 'What is the last name of the employee?',
+                name: 'last_name',
+            },
+            {
+                type: 'input',
+                message: 'What is their role ID?',
+                name: 'role_id',
+            },
+            {
+                type: 'input',
+                message: 'What is the manager ID for the role?',
+                name: 'manager_id',
+            },
+        ])
+        .then((response) => {
+            db.query("INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?), [employee.first_name, employee.last_name, employee.role_id, employee.manager_id]")
+            console.table(response);
+        })
+
+};
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {
