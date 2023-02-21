@@ -184,9 +184,18 @@ function addEmployee() {
             },
         ])
         .then((response) => {
-            db.query("INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?), [employee.first_name, employee.last_name, employee.role_id, employee.manager_id]")
-            console.table(response);
-            startPrompt();
+            db.query("INSERT INTO employee SET ?", 
+            {
+                first_name: response.first_name,
+                last_name: response.last_name,
+                role_id: response.role_id,
+                manager_id: response.manager_id,
+              },
+              function(err) {
+                if (err) throw err
+                console.table(response);
+                startPrompt();
+            });
         })
 
 };
