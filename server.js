@@ -77,7 +77,6 @@ inquirer
 function viewAllDepartments() {
     db.query("SELECT * FROM department", function (err, results) {
         console.table(results);
-        // res.status(200).json(results);
         startPrompt();
   })
 }
@@ -86,7 +85,6 @@ function viewAllDepartments() {
 function viewAllRoles() {
     db.query("SELECT * FROM role", function (err, results) {
         console.table(results);
-        // res.status(200).json(results);
         startPrompt();
     });
 };
@@ -95,7 +93,6 @@ function viewAllRoles() {
 function viewAllEmployees() {
     db.query("SELECT * FROM employee", function (err, results) {
         console.table(results);
-        // res.status(200).json(results);
         startPrompt();
         
     });
@@ -121,7 +118,7 @@ function addDepartment() {
                 name: answer.name },
                  function (err, res) {
                 console.log(`New department has been added to the database.`);
-                console.table(res);
+                console.table(answer);
                 startPrompt();
             })
         })
@@ -148,9 +145,17 @@ function addRole() {
             },
         ])
         .then((response) => {
-            db.query("INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?), [role.title, role.salary, role.department_id]")
-            console.table(response);
-            startPrompt();
+            db.query("INSERT INTO role SET ?", 
+            {
+                title: response.title,
+                salary: response.salary,
+                department_id: response.department_id,
+              },
+              function(err) {
+                if (err) throw err
+                console.table(response);
+                startPrompt();
+            });
         })
 };
 //add employee function
