@@ -27,8 +27,14 @@ const db = mysql.createConnection(
   },
   console.log(`Connected to the employee_trackerDB database.`)
 );
+//start function to prompt questions on connection
+db.connect(function (err) {
+    if (err) throw err
+    startPrompt();
+})
 
 //prompt for questions
+function startPrompt() {
 inquirer
 .prompt(
     [
@@ -65,29 +71,32 @@ inquirer
             break;
         }
     });
-    
+}
 
 //view all departments
 function viewAllDepartments() {
     db.query("SELECT * FROM department", function (err, results) {
         console.table(results);
-        res.status(200).json(results);
+        // res.status(200).json(results);
+        startPrompt();
   })
 }
 
 //view all roles
 function viewAllRoles() {
-    db.query("SELECT * FROM roles", function (err, results) {
+    db.query("SELECT * FROM role", function (err, results) {
         console.table(results);
-        res.status(200).json(results);
+        // res.status(200).json(results);
+        startPrompt();
     });
 };
 
 //view all employees
 function viewAllEmployees() {
-    db.query("SELECT employee.id, employee.first_name, employee.last_name, roles.title, department.name AS Department, roles.salary, CONCAT(manager.first_name,' ', manager.last_name) AS manager  FROM employee  JOIN roles ON employee.role_id = roles.id JOIN department ON roles.department_id = department.id LEFT JOIN employee AS manager ON employee.manager_id = manager.id;", function (err, results) {
+    db.query("SELECT * FROM employee", function (err, results) {
         console.table(results);
-        res.status(200).json(results);
+        // res.status(200).json(results);
+        startPrompt();
         
     });
 };
@@ -113,6 +122,7 @@ function addDepartment() {
                  function (err, res) {
                 console.log(`New department has been added to the database.`);
                 console.table(res);
+                startPrompt();
             })
         })
 };
@@ -140,6 +150,7 @@ function addRole() {
         .then((response) => {
             db.query("INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?), [role.title, role.salary, role.department_id]")
             console.table(response);
+            startPrompt();
         })
 };
 //add employee function
@@ -170,6 +181,7 @@ function addEmployee() {
         .then((response) => {
             db.query("INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?), [employee.first_name, employee.last_name, employee.role_id, employee.manager_id]")
             console.table(response);
+            startPrompt();
         })
 
 };
