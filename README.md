@@ -8,16 +8,14 @@ MIT Badge: [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 - <a name="description" href="#description">Description</a>
 - <a name="installation" href="#installation">Installation</a>
-- <a name="usage" href="#usage">Usage</a>
 - <a name="collaborators" href="#collaborators">Collaborators</a>
 - <a name="guidelines" href="#guidelines">Guidelines</a>
-- <a name="tests" href="#tests">Tests</a>
 - <a name="license" href="#license">License</a>
 - <a name="contact" href="#contact">Contact</a>
 
 ## Description
 
-This is a complete project of using mysql database to track and input new information with mysql database.
+This is a complete project of using mysql database to track and input new information with mysql database. This application can be used for businesses to track employees, salary, manager id's and how those realate.
 
 ## Installation
 
@@ -31,9 +29,6 @@ Video link: https://drive.google.com/file/d/1p07dt92IOEYbEyhaPrdSADnzZ289nP6M/vi
 
 n/a
 
-## Tests
-
-Insomnia
 
 ## License Used
 
