@@ -107,7 +107,7 @@ function addDepartment() {
         .prompt([
             {
                 type: 'input',
-                message: 'Enter new deparment name',
+                message: 'Enter deparment name',
                 name: 'name',
             },
         ])
@@ -130,17 +130,17 @@ function addRole() {
         .prompt([
             {
                 type: 'input',
-                message: 'What is the name of the role?',
+                message: 'Enter name of role',
                 name: 'title',
             },
             {
                 type: 'input',
-                message: 'What is the salary of the role?',
+                message: 'Enter salary of the role',
                 name: 'salary',
             },
             {
                 type: 'input',
-                message: 'To which department ID does the role belong?',
+                message: 'Enter department ID for the role',
                 name: 'department_id',
             },
         ])
@@ -164,22 +164,22 @@ function addEmployee() {
         .prompt([
             {
                 type: 'input',
-                message: 'What is the first name of the employee?',
+                message: 'Enter first name of the employee',
                 name: 'first_name',
             },
             {
                 type: 'input',
-                message: 'What is the last name of the employee?',
+                message: 'Enter last name of the employee',
                 name: 'last_name',
             },
             {
                 type: 'input',
-                message: 'What is their role ID?',
+                message: 'Enter role ID',
                 name: 'role_id',
             },
             {
                 type: 'input',
-                message: 'What is the manager ID for the role?',
+                message: 'Enter manager ID for the role',
                 name: 'manager_id',
             },
         ])
