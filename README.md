@@ -25,7 +25,7 @@ You are required to have filesystem, inquirer, console.table and express install
 
 ## Usage
 
-Video link:
+Video link: https://drive.google.com/file/d/1p07dt92IOEYbEyhaPrdSADnzZ289nP6M/view
 
 ## Collaborators
 
